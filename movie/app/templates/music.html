@@ -1,0 +1,425 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="icon" href="{{ url_for('static',filename='logo1.jpg')}}">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<style>
+* {
+  border-radius: 0 !important;
+}
+.nopadding{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+#rlprevinput{
+    min-width:600px;
+}
+@media only screen and (max-width: 917px) {
+    .rlimage {
+height:50px;
+width: 180px;
+    }
+}
+@media only screen and (max-width: 868px) {
+    .rlimage {
+height:50px;
+width: 140px;
+    }
+}
+@media only screen and (max-width: 828px) {
+    #rlprevinput {
+min-width: 500px;
+    }
+}
+@media only screen and (max-width: 768px) {
+   .navbar-form{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+   .navbar-header {
+    float: left;
+    /*padding: 15px;*/
+    text-align: center;
+    width: 100%;
+}
+.rlimage{
+    padding-left: 30%;
+    padding-right: 30%;
+    height: 50px;
+}
+.navbar-brand {float:none;}
+    #rlprevinput {
+min-width: 650px;
+text-align: center;
+    }
+}
+@media only screen and (max-width: 710px) {
+
+    #rlprevinput {
+min-width: 600px;
+    }
+}
+@media only screen and (max-width: 665px) {
+
+    #rlprevinput {
+min-width: 500px;
+    }
+}
+@media only screen and (max-width: 565px) {
+    #rlprevinput {
+min-width: 400px;
+    }
+}
+@media only screen and (max-width: 465px) {
+ .rlimage{
+    padding-left: 20%;
+    padding-right: 20%;
+}
+    
+    #rlprevinput {
+min-width: 300px;
+    }
+}
+@media only screen and (max-width: 365px) {
+    .navbar-brand{
+        float:left;
+    }
+    #rlprevinput {
+min-width: 200px;
+    }
+}
+@media only screen and (max-width: 265px) {
+
+    #rlprevinput {
+min-width: 100px;
+    }
+}
+    @media only screen and (max-width: 165px) {
+    #rlprevinput {
+min-width: 100%;
+    }
+}
+</style>
+
+<body>
+
+
+<header></header>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+    	<div class="navbar-header rlimage">
+      		<a class="navbar-brand nopadding rlimage" href="#">
+        	<img alt="Brand" src="{{ url_for('static',filename='logo.png')}}" style="width:90%;height:100%;" class="rlimage">
+      		</a>
+    	</div>
+    	<form class="navbar-form" role="search">
+		<div class="input-group">
+    		<input type="text" min="0" max="5" class="form-control input-sm" list="list1" id="rlprevinput" placeholder="Search text" name="abc" >
+    		<datalist id="list1" ></datalist>
+    		<span class="input-group-btn" style="width:0;">
+        	<button class="btn btn-default "  style="border:2px solid #c7c5c5;" type="button"  id="submitBtn"><i class="glyphicon glyphicon-search"></i></button>
+    		</span>
+		</div>
+		</form>
+	</div>
+</nav>
+
+<div class="container-fluid">
+<div class="row" style="height:70px;">
+	<div class="col-sm-12">
+	</div>
+</div>
+</div>
+
+<div class="container-fluid">
+
+
+<div class="row" style="overflow:scroll">
+<div class="col-sm-3 well well-sm">
+
+<div class="row">
+    <div class="col-sm-12">
+    <div class="well well-sm" id="queryofmusic1">
+    <h5>Query top 10 played songs:</h5>
+    </div>
+    </div>
+    </div>
+    
+    <div class="row">
+    <div class="col-sm-12">
+    <div class= "well well-sm" id="queryofmusic2">
+    <h5>Top 10 user listeners :</h5>
+    </div>
+    </div>
+    </div>
+
+
+
+
+</div>
+    <div class="col-sm-6" id="wholenewdiv">
+    </div>
+    <div class="col-sm-3 well well-sm" style="height:1000px;" id="wholenewdiv1">
+</div>
+
+
+</div> <!-- row-main ends -->
+
+
+</div> <!-- container-fluid -->
+
+
+<script>
+
+
+
+var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+
+$(function() {
+    $("#queryofmusic2").click(function() {
+         
+         $.ajax({
+            type: "GET",
+            url: $SCRIPT_ROOT + "/musicquery2",
+            contentType: "application/json; charset=utf-8",
+            data: { echoValue: "reached" },
+            success: function(data) {
+                var a = document.getElementById("wholenewdiv");
+         while(a.hasChildNodes()) {
+            a.removeChild(a.lastChild);
+         }
+                list= data.value;
+                console.log(list.length);
+                for( var i=0; i<list.length;i++)
+                {
+                var divrow =document.createElement("div");
+                divrow.className="row well well-sm";
+                var divcol1 =document.createElement("div");
+                divcol1.className="col-md-4";
+                var divcol2 =document.createElement("div");
+                divcol2.className="col-md-8";
+                var a =document.createElement("a");
+                a.href = "#";
+                var img =document.createElement("img");
+                var h50=document.createElement("h5");
+                var h51=document.createElement("h5");
+                //var h52=document.createElement("h5");
+                //var h53=document.createElement("h5");
+
+                img.src="{{ url_for('static',filename='music2.jpg')}}";
+                img.style.textAlign="left";
+                img.style.width="150";
+                //img.id=list[i][3];
+                var val = document.createAttribute("onclick");
+                val.value = "movieClick(this.id)";
+                img.setAttributeNode(val);
+
+                var name1=list[i][0];
+                var name2=list[i][1];
+                //var name3=list[i][2];
+                //var name4=list[i][3];
+                h50.innerHTML="User ID: "+name1;
+                h51.innerHTML="Times Listened: "+name2;
+                //h52.innerHTML="Artist: "+name3;
+                //h53.innerHTML="Track ID.: "+name4;
+
+                divrow.appendChild(divcol1);
+                divrow.appendChild(divcol2);
+                divcol1.appendChild(a);
+                a.appendChild(img);
+                divcol2.appendChild(h50);
+                divcol2.appendChild(h51);
+                //divcol2.appendChild(h52);
+                //divcol2.appendChild(h53);
+
+                document.getElementById("wholenewdiv").appendChild(divrow);
+
+            }
+
+                  
+            }
+        });     
+    });
+  });
+
+$(function() {
+    $("#queryofmusic1").click(function() {
+         
+         $.ajax({
+            type: "GET",
+            url: $SCRIPT_ROOT + "/musicquery1",
+            contentType: "application/json; charset=utf-8",
+            data: { echoValue: "reached" },
+            success: function(data) {
+                var a = document.getElementById("wholenewdiv");
+         while(a.hasChildNodes()) {
+            a.removeChild(a.lastChild);
+         }
+                list= data.value;
+                console.log(list.length);
+                for( var i=0; i<list.length;i++)
+                {
+                var divrow =document.createElement("div");
+                divrow.className="row well well-sm";
+                var divcol1 =document.createElement("div");
+                divcol1.className="col-md-4";
+                var divcol2 =document.createElement("div");
+                divcol2.className="col-md-8";
+                var a =document.createElement("a");
+                a.href = "#";
+                var img =document.createElement("img");
+                var h50=document.createElement("h5");
+                var h51=document.createElement("h5");
+                //var h52=document.createElement("h5");
+                //var h53=document.createElement("h5");
+
+                img.src="{{ url_for('static',filename='music2.jpg')}}";
+                img.style.textAlign="left";
+                img.style.width="150";
+                //img.id=list[i][3];
+                var val = document.createAttribute("onclick");
+                val.value = "movieClick(this.id)";
+                img.setAttributeNode(val);
+
+                var name1=list[i][0];
+                var name2=list[i][1];
+                //var name3=list[i][2];
+                //var name4=list[i][3];
+                h50.innerHTML="Song ID: "+name1;
+                h51.innerHTML="Times Listened: "+name2;
+                //h52.innerHTML="Artist: "+name3;
+                //h53.innerHTML="Track ID.: "+name4;
+
+                divrow.appendChild(divcol1);
+                divrow.appendChild(divcol2);
+                divcol1.appendChild(a);
+                a.appendChild(img);
+                divcol2.appendChild(h50);
+                divcol2.appendChild(h51);
+                //divcol2.appendChild(h52);
+                //divcol2.appendChild(h53);
+
+                document.getElementById("wholenewdiv").appendChild(divrow);
+
+            }
+
+                  
+            }
+        });     
+    });
+  });
+
+
+
+$(function() {
+    $("#rlprevinput").keyup(function(event) {
+        if(event.keyCode > 40 || event.keyCode == 32)
+        {
+
+        console.log(event.keyCode);
+        var datal= document.getElementById('list1');
+        var input = document.getElementById('rlprevinput');
+        /*alert("hello");*/
+         $.ajax({
+            type: "GET",
+            url: $SCRIPT_ROOT + "/autocomplete1",
+            contentType: "application/json; charset=utf-8",
+            data: { echoValue: $('input[name="abc"]').val() },
+            success: function(data) {
+                console.log(data);
+                var options =  "";
+                list = data.value;
+                for(i = 0 ; i < list.length; i++ ) {
+                   var option = "<option value ='" + list[i] + "'>" + list[i] + "</option>";
+                    options = options + option;
+                }
+                $('#list1').html(options);
+            }
+        });
+        }     
+    });
+  });
+
+$(function() {
+    $("#submitBtn").click(function() {
+         var a = document.getElementById("wholenewdiv");
+         while(a.hasChildNodes()) {
+            a.removeChild(a.lastChild);
+         }
+         $.ajax({
+            type: "GET",
+            url: $SCRIPT_ROOT + "/musicupdate",
+            contentType: "application/json; charset=utf-8",
+            data: { echoValue: $('input[name="abc"]').val() },
+            success: function(data) {
+                list= data.value;
+                
+                console.log(list.length);
+                console.log(list);
+                for( var i=0; i<list.length;i++)
+                {
+                var divrow =document.createElement("div");
+                divrow.className="row well well-sm";
+                var divcol1 =document.createElement("div");
+                divcol1.className="col-md-4";
+                var divcol2 =document.createElement("div");
+                divcol2.className="col-md-8";
+                var a =document.createElement("a");
+                a.href = "#";
+                var img =document.createElement("img");
+                var h50=document.createElement("h5");
+                var h51=document.createElement("h5");
+                var h52=document.createElement("h5");
+                var h53=document.createElement("h5");
+
+                img.src="{{ url_for('static',filename='music2.jpg')}}";
+                img.style.textAlign="left";
+                img.style.width="150";
+                //img.id=list[i][3];
+                var val = document.createAttribute("onclick");
+                val.value = "movieClick(this.id)";
+                img.setAttributeNode(val);
+
+                var name1=list[i][0];
+                var name2=list[i][1];
+                var name3=list[i][2];
+                var name4=list[i][3];
+                h50.innerHTML="Song Name: "+name1;
+                h51.innerHTML="Year: "+name2;
+                h52.innerHTML="Artist: "+name3;
+                h53.innerHTML="Track ID.: "+name4;
+
+                divrow.appendChild(divcol1);
+                divrow.appendChild(divcol2);
+                divcol1.appendChild(a);
+                a.appendChild(img);
+                divcol2.appendChild(h50);
+                divcol2.appendChild(h51);
+                divcol2.appendChild(h52);
+                divcol2.appendChild(h53);
+
+                document.getElementById("wholenewdiv").appendChild(divrow);
+                
+                
+                            
+            }
+
+
+             
+                  
+            }
+        });     
+    });
+  });
+</script>
+</body>
+</html>
+

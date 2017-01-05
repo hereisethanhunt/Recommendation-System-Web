@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+<link rel="icon" href="movies2.jpg">
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- title and meta -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="description" content="Image overlay hover effects with CSS3 transitions. When we hover over an image, a neat transition will occur." />
+</head>
+
+
+<style>
+* {
+  border-radius: 0 !important;
+}
+*{
+    padding: 0 !important;
+    margin: 0 !important;
+}
+h1 { color: #d54d7b; font-family: "Great Vibes", cursive; font-size: 50px; line-height: 160px; font-weight: normal; margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff; }
+
+
+p { color: #7a7c7f; font-size: 29px; font-family: "Libre Baskerville", serif; line-height: 45px; text-align: center; text-shadow: 0 1px 1px #fff; padding-top: 20px; font-style: italic;}
+
+h2 { color: #111; font-family: 'Open Sans', sans-serif; font-size: 30px; font-weight: 300; line-height: 32px; margin: 0 0 72px; text-align: center; }
+img {
+  -webkit-animation-name: example; /* Chrome, Safari, Opera */
+    -webkit-animation-duration: 4s; /* Chrome, Safari, Opera */
+    animation-name: example;
+    animation-duration: 4s;
+  -webkit-transition: all 0,3s ease;
+     -moz-transition: all 0,3s ease;
+       -o-transition: all 0,3s ease;
+      -ms-transition: all 0,3s ease;
+          transition: all 0,3s ease;
+              transition: width 2s, height 2s, transform 2s;
+
+}
+ 
+img:hover {
+    /* -webkit-filter: grayscale(98%);*/
+      /*   -webkit-transform: rotate(360deg);*/ /* Safari */
+             transform: scale(1.1,1.1); /* Standard syntax */
+
+
+
+}
+</style>
+<body style="width:100%;height:100%;">
+
+
+<header style="height:30%;background-color:#e5c100;">
+    <div id="title" class="container-fluid" style="">
+        <h1>Select The Database You Want To View.</h1>
+        <p>Database include (Movies,Songs,Books,Users)</p>
+    </div>
+</header><!-- /header -->
+
+
+    <div class="container-fluid" style="height:40%;">
+        
+        <div class="row">
+            <div class="col-sm-3"  style="border-style:inset;
+border-color: #000000;">
+            
+            <a href="/movies" title="Movie Database"><img class="color" style="width:100%;height:100%;" src="{{ url_for('static',filename='movies1.jpg')}}" alt=""/></a>            
+            </div>
+            <div class="col-sm-3" style="border-style:inset;
+border-color: #000000;">
+     <a href="/music" title="Music Database"><img class="color" style="width:100%;height:100%;" src="{{ url_for('static',filename='music1.jpg')}}" alt=""/></a>
+          
+      </div>
+            <div class="col-sm-3"  style="border-style:inset;
+border-color: #000000;">
+    <a href="/books" title="Books Database"><img class="color" style="width:100%;height:100%;" src="{{ url_for('static',filename='books1.jpg')}}" alt=""/></a>
+ 
+                </div>
+                <div class="col-sm-3"  style="border-style:inset;
+border-color: #000000;">
+    <a href="/crossdomain" title="Cross Domain"><img class="color" style="width:100%;height:100%;" src="{{ url_for('static',filename='cross5.png')}}" alt=""/></a>
+ 
+                </div>
+        </div>
+         <div class="row" style="background-color:#e5c100">
+            <div class="col-sm-3">
+            <p>Movie Database</p>
+            </div>
+            <div class="col-sm-3">
+                      <p>Music Database</p>
+
+      </div>
+            <div class="col-sm-3">
+                <p>Books Database</p>
+
+                </div>
+                <div class="col-sm-3">
+                <p>Cross Domain</p>
+
+                </div>
+        </div>
+    </div><!-- /.container -->
+
+
+<footer style="width:100%;height:120px;background-color:#e5c100">
+
+</footer><!-- /footer -->
+
+
+</body>
+</html>

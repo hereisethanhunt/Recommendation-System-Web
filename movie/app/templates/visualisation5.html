@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Number of Ratings given (1-10)  </h1>
+
+<svg width="800" height="600">
+   <!-- {% set prev=500 %} -->
+  {% set x1=0 %}
+  {% set z=1 %}
+   {% for x in arr %}
+   
+   <rect height={{x[1]/250}} width="60" x={{x1}} y={{500-x[1]/250}}  stroke="green" stroke-width="4" fill="yellow" />
+   <text x={{x1-2}} y={{500-x[1]/250}} font-family="Verdana" font-size="24" fill="blue" > {{x[1]}} </text>
+   <text x={{x1}} y={{520}} font-family="Verdana" font-size="24" fill="black" > {{z}} </text>
+   {% set x1=x1+60 %}
+   {% set z=z+1 %}
+   {% endfor %}
+
+  
+   Sorry, your browser does not support inline SVG.
+</svg>
+
+
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+
+<head>
+<link rel="icon" href="movies2.jpg">
+
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!-- title and meta -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<meta name="description" content="Image overlay hover effects with CSS3 transitions. When we hover over an image, a neat transition will occur." />
+</head>
+
+<style>
+body{background-image: url("/static/movie.jpg");}
+header{ color: #ffffff; font-family: "Great Vibes", cursive; font-size: 50px; line-height: 160px; font-weight: normal; margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff; }
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
+</style>
+
+<body>
+
+    <div class="container-fluid">
+<div class="row">
+<div class="col-sm-2">
+</div>
+<div class="col-sm-8" style="">
+<div class= "well well-sm" style="margin:10%;border-radius:10px;margin-bottom:0px;margin-top:10px;">
+<header style="background-color:#bf4949;margin:1%;margin-bottom:2%;border-radius:10px;">
+    <div id="title" class="" style="text-align:center;">
+        <h1><b><i>LOGIN USER</i></b></h1>
+    </div>
+</header><!-- /header -->
+
+
+          <form class="form-horizontal" role="form" method="post" action="{{ url_for('form') }}">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="userid">User-ID:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="userid" name="userid" placeholder="Enter Userid">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="gender">Gender:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter Gender">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">  
+          <label class="control-label col-sm-2" for="Submit">Submit:</label>      
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-danger" id="submitform" style="width:100%;text-align:left;">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  </div>
+  </div>
+  <div class="col-sm-2">
+</div>
+  </div>
+  <hr>
+  <div class="row">
+  <div class="col-sm-2">
+</div>
+  <div class="col-sm-8">
+<div class= "well well-sm" style="margin:10%;border-radius:10px;margin-top:0px;">
+
+
+<header style="background-color:#bf4949;margin:1%;margin-bottom:2%;border-radius:10px;">
+    <div id="title" class="" style="text-align:center;">
+        <h1><b><i>SIGNUP USER</i></b></h1>
+    </div>
+</header><!-- /header -->
+
+  <form class="form-horizontal" role="form" method="post" action="{{ url_for('form1') }}">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="userid">User-ID:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="userid" name="userid" placeholder="Enter Userid">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="location">location:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="location" name="location" placeholder="Enter location">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="age">Age:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="age" name="age" placeholder="Enter Age">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="occupation">Occupation:</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Enter Occupation">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="gender">Gender:</label>
+      <div class="col-sm-10">          
+        <input type="text" class="form-control" id="gender" name="gender" placeholder="Enter Gender">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">  
+          <label class="control-label col-sm-2" for="Submit1">Submit:</label>      
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-danger" id="submitform1" style="width:100%;text-align:left;">Submit</button>
+      </div>
+    </div>
+  </form>
+
+
+    </div>
+    </div>
+    <div class="col-sm-2">
+</div>
+    </div>
+</div><!-- /.container -->
+</body>
+</html>
